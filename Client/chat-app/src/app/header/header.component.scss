@@ -1,0 +1,13 @@
+.header-container {
+    margin: 10px;
+    shape-margin: round($number: 1);
+    border: 1px solid rgba(16, 132, 241, 0.747);
+    background-color: rgba(16, 132, 241, 0.747);
+    text-align: center;
+    text-decoration-color: black;
+    position: relative;
+    
+    .well {
+        margin: 10px;
+    }
+}

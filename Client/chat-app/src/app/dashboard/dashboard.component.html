@@ -1,0 +1,91 @@
+<div class="container">
+  <div class="well">
+
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <ul class="nav navbar-nav ">
+          <li class="col-md-4 ">
+            <a href="#" class="glyphicon glyphicon-user" data-toggle="tooltip" title="Contacts"></a>
+          </li>
+          <li class="col-md-4">
+            <a href="#" class="glyphicon glyphicon-envelope" data-toggle="tooltip" title="Conversations"></a>
+          </li>
+          <li class="col-md-4">
+            <a href="#" class="glyphicon glyphicon-calendar" data-toggle="tooltip" title="Meetings"></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="input-group">
+      <input class="form-control" type="text" placeholder="Thought of the day">
+    </div>
+    <div class="row">
+      <div class="col-md-1 ">
+        <img src="..\assets\images\Capture.png" class="img-container">
+      </div>
+      <div class="dropdown status">
+        <!-- <select class="dropdown-toggle">
+         <option>Availabe</option>
+         <option>Away</option>
+         <option>Logged Off</option>
+         <option>Busy</option>
+         <option>Off-work</option>
+         <option>Signout</option>
+       </select> -->
+        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+          Status
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-left">
+          <li>
+            <span class="glyphicon glyphicon-ok-sign">Available</span>
+          </li>
+          <li >
+            <span class="glyphicon glyphicon-time">Away</span>
+          </li>
+          <li>
+            <span class="glyphicon glyphicon-time">Logged-off</span>
+          </li>
+          <li>
+            <span class="glyphicon glyphicon-minus-sign">Busy</span>
+          </li>
+          <li>
+            <span class="glyphicon glyphicon-remove-sign">Off-work</span>
+          </li>
+          <!-- <li role="separator" class="divider"></li> -->
+          <li>
+            <span class="glyphicon glyphicon-log-out">Signout</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+
+    <div class="input-group">
+      <input class="form-control" type="text" aria-describedby="basic-addon2" placeholder="Find someone">
+      <span class="input-group-addon">
+        <span class=" glyphicon glyphicon-search"></span>
+      </span>
+    </div>
+
+
+    <nav class="navbar navbar-default ">
+      <div class="container-fluid ">
+        <div class="row ">
+          <ul class="nav navbar-nav">
+            <li class="col-md-4">
+              <a href="#" id="change2Blue1" (click)="mouseEnter('change2Blue1')">Group</a>
+            </li>
+            <li class="col-md-4">
+              <a href="#" id="change2Blue2" (click)="mouseEnter('change2Blue2')">Recent</a>
+            </li>
+            <li class="col-md-4">
+              <a href="#" id="change2Blue3" (click)="mouseEnter('change2Blue3')">Important</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>

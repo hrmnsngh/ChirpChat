@@ -1,0 +1,45 @@
+<div class="chat-container">
+
+
+  <div class="chat col-md-8">
+    <h3 *ngIf="canSendMsg && history">Chat History</h3>
+    <div *ngIf="canSendMsg && history" class="chat-history">
+
+      <div *ngFor="let message of messages">
+        <div class="well">
+          <div class="col-md-8">
+            <span  >
+              <b [ngClass]="rightMsg? 'right' : 'left'">{{message.user}}:</b>&nbsp;&nbsp;{{message.message}}</span>
+            <span  [ngClass]="rightMsg? 'right' : 'left'">{{message.date| date:'shortTime'}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <form class="chat-box cards">
+      <div *ngIf="!userNameExist && !canSendMsg" id="user">
+        <input class="input-box" type="text" name="username" [(ngModel)]="sentUsername" placeholder="Username">
+        <button class="btn btn-primary" (click)="sendUser()">Chat</button>
+      </div>
+      <div *ngIf="userNameExist">
+        <div id="user-error" class="alert alert-warning">
+          Username already exists, try some other username.
+        </div>
+        <button class="btn btn-primary" (click)="resetUser()">Back</button>
+      </div>
+
+
+      <div *ngIf="canSendMsg">
+        <label>
+          <h2 class="username">{{sentUsername}}</h2>
+        </label>
+        <input class="input-box" type="text" name="message" id="message" [(ngModel)]="message" placeholder="Type your message">
+        <button class="btn glyphicon glyphicon-send" (click)="sendMessage()">
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- <div [ngClass]="rightMsg? 'right' : 'left'">
+ Right left test
+</div> -->

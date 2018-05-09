@@ -1,0 +1,66 @@
+.chat-container{
+    .chat{
+        padding-top: 5%;
+        padding-left: 10%;
+        padding-right: 10%;
+
+        .chat-box{
+            padding: 5px;
+           // background-color: rgb(42, 194, 174);
+
+            .username {
+                border: 1px gray;
+                border-radius: 3px;
+            }
+            .input-box{
+                padding: 3px;
+                border: 1px solid rgba(90, 163, 160, 0.582);
+                border-radius: 5px;
+                height: 40px;
+                width: 350px; 
+               // background-color: rgb(42, 194, 174);
+            }
+            
+            .btn{
+                height: 40px;
+                width: 60px;
+                border-radius: 5px;
+               // background-color: rgb(42, 194, 174);
+            }
+            
+
+        }
+        .chat-history{
+            padding: 5px;
+            border: 1px solid rgba(173, 190, 19, 0.952);
+            border-radius: 13px;
+            background-color: rgba(178, 213, 226, 0.87);
+            height: auto;
+            
+
+            .data{
+                position: auto;
+
+                border: 1px solid grey;
+                border-radius: 25px;
+                
+
+            }
+            .right {
+                background-color: rgb(160, 230, 49);
+                margin-top: 3px;
+                margin-top: 3px;
+                margin-left: 20px;
+                }
+            .left {
+                background-color: rgb(12, 113, 180);
+                margin-top: 3px;
+                margin-top: 3px;
+
+            }
+        }
+
+ 
+    }
+
+}
