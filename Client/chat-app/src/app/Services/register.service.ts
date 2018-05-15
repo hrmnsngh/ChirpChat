@@ -14,7 +14,7 @@ export class RegisterService {
   }
 
   postUserRegistration(data) {
-    console.log('In service register user : ' + data.username + ' ' + data.password.value);
+    console.log('In service register user : ' + data.value);
     this.socket.emit('register', data);
   }
 

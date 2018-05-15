@@ -26,7 +26,7 @@ export class RegistrationComponent implements OnInit {
       password: ['singh', Validators.required],
       email: ['harman@abc.com', Validators.required],
       mobile: ['0123564879', Validators.required],
-      age: ['', Validators.required]
+      age: ['18', Validators.required]
     });
   }
   showPassword() {
@@ -36,11 +36,11 @@ export class RegistrationComponent implements OnInit {
   regForm(data) {
     console.log(data.value + 'data : ' + data.toString());
     //this.router.navigate(['']);
-    let data1 = JSON.stringify(data.value);
-    localStorage['C:/Users/harman.d.singh/Documents/my-data'] = JSON.stringify(data.value);
-    console.log(JSON.stringify(data.value));
-    this.registerService.postUserRegistration(data.value['username']);
-    setTimeout(this.getRegistrationResult(), 5000);
+    // let data1 = JSON.stringify(data.value);
+    // localStorage['C:/Users/harman.d.singh/Documents/my-data'] = JSON.stringify(data.value);
+    console.log('Data passed' + JSON.stringify(data.value));
+     this.registerService.postUserRegistration(data.value);
+    // setTimeout(this.getRegistrationResult(), 5000);
   }
   getRegistrationResult() {
     this.registrationResult = this.registerService.getRegistrationResult();
@@ -51,7 +51,7 @@ export class RegistrationComponent implements OnInit {
   }
   ngOnInit() {
     this.slider = document.getElementById('slider')['value'];
-    //this.getRegistrationResult();
+    this.getRegistrationResult();
   }
 
 }

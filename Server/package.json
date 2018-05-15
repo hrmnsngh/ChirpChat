@@ -10,6 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.3",
+    "mongodb": "^3.1.0-beta4",
+    "mongoose": "^5.1.0",
+    "mysql": "^2.15.0",
     "nodemon": "^1.17.3",
     "socket.io": "^2.1.0"
   }
