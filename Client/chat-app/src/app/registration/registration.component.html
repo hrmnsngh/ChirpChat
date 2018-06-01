@@ -14,6 +14,9 @@
             <input class="form-control" id="username" name="username" type="text" formControlName="username">
           </div>
         </div>
+        <div *ngIf="userExist" class="alert alert-danger">
+          Username already taken, try some other username.
+        </div>
         <div class="col-md-4" *ngIf="registrationForm.controls['username'].invalid && (registrationForm.controls['username'].dirty || registrationForm.controls['username'].touched)">
           <div class="alert alert-danger">
             Username is required

@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ViewChild } from '@angular/core';
 import { ReCaptchaComponent } from 'angular2-recaptcha';
 import { LoginService } from '../Services/login.service';
+import { async } from 'q';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   @ViewChild(ReCaptchaComponent) captcha: ReCaptchaComponent;
   username;
   password;
-  loginAttempt;
+  loginResponse;
   loginForm: FormGroup;
   verifyPic: Boolean = false;
   token;
@@ -23,8 +24,8 @@ export class LoginComponent implements OnInit {
   constructor(private fb: FormBuilder, private loginService: LoginService) {
     // window['verifyCallback'] = this.verifyCallback.bind(this);
     this.loginForm = this.fb.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
+      username: ['harman', Validators.required],
+      password: ['password', Validators.required]
     });
   }
 
@@ -55,18 +56,30 @@ export class LoginComponent implements OnInit {
     this.token = this.captcha.getResponse();
   }
   login(data) {
-    console.log(data.value);
-    this.loginService.postUser(this.username);
+    console.log(data);
+    this.loginService.postUser(data);
+    this.loginResult();
   }
 
-  loginResult() {
-    this.loginService.getUser().subscribe(data => {
-      this.loginAttempt.push(data);
-      console.log(data);
+  async loginResult() {
+    // console.log(this.loginService.getUser());
+    await this.loginService.getUser().subscribe(data => {
+      setTimeout(() => {
+        this.loginResponse = data;
+        console.log('Ts recieved response : ', data['data']);
+      }, 10000);
     });
+    setTimeout(() => {
+      console.log(this.loginResponse);
+      //this.loginService.getUser().unsubscribe();
+    }, 10000);
   }
   ngOnInit() {
-    this.loginResult();
+    // this.loginResult();
+  }
+  // tslint:disable-next-line:use-life-cycle-interface
+  ngOnDestroy() {
+
   }
 
 }

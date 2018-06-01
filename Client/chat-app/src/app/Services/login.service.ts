@@ -20,15 +20,19 @@ export class LoginService {
 
   getUser() {
     let observable = new Observable(observer => {
-      this.socket.on('userSet', (data) => {
-        this.username = data.username;
-        console.log('In service get User (login)');
-        observer.next(data.username);
+      this.socket.on('response', (data) => {
+       console.log('In service get User (login)', data);
+       // observer.next(data);
+       if (err) {
+         observer.error();
+       }
+       observer.complete();
       });
       return () => {
         this.socket.disconnect();
       };
-    });
+    }
+  );
     return observable;
   }
 }

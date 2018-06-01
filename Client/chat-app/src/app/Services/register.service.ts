@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs/';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import * as io from 'socket.io-client';
 @Injectable()
 export class RegisterService {
@@ -9,22 +10,26 @@ export class RegisterService {
   private socket;
   private username;
   private password;
-  constructor() {
+  constructor(private http: Http) {
     this.socket = new io(this.url, { transports: ['websocket'] });
   }
 
-  postUserRegistration(data) {
-    console.log('In service register user : ' + data.value);
+  post(data) {
+    console.log('In service register user : ' + JSON.stringify(data));
     this.socket.emit('register', data);
   }
 
-  getRegistrationResult() {
+  get() {
+
+    // let data = this.http.get(this.url).map((res: Response) => res.json())
+    // .catch((error: any) => Observable.throw(error.json.error || 'Server error'));
+    //  console.log(data);
+
     let observable = new Observable(observer => {
-      this.socket.on('userSet', (data) => {
+      this.socket.on('response', (data) => {
         this.username = data;
-        console.log('In service result : ' + data + data.user);
-        observer.next(data);
-           });
+        console.log('In service recieved response : ' + data);
+                   });
 
       return () => {
         this.socket.disconnect();

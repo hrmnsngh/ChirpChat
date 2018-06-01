@@ -19,7 +19,8 @@ export class RegistrationComponent implements OnInit {
   showPass: Boolean = false;
   slider: number;
   age: number;
-  registrationResult: any;
+  registrationResult;
+  userExist: Boolean = false;
   constructor(private fb: FormBuilder, private router: Router, private registerService: RegisterService) {
     this.registrationForm = this.fb.group({
       username: ['harman', Validators.required],
@@ -36,22 +37,35 @@ export class RegistrationComponent implements OnInit {
   regForm(data) {
     console.log(data.value + 'data : ' + data.toString());
     //this.router.navigate(['']);
-    // let data1 = JSON.stringify(data.value);
-    // localStorage['C:/Users/harman.d.singh/Documents/my-data'] = JSON.stringify(data.value);
     console.log('Data passed' + JSON.stringify(data.value));
-     this.registerService.postUserRegistration(data.value);
-    // setTimeout(this.getRegistrationResult(), 5000);
+    this.registerService.post(data.value);
+    this.getRegistrationResult();
+    console.log(JSON.stringify(this.registrationResult));
   }
   getRegistrationResult() {
-    this.registrationResult = this.registerService.getRegistrationResult();
-    console.log('In ts recieved response  : ' + this.registrationResult.value);
+    this.registerService.get().subscribe(
+      async data => {
+        if (data) {
+          console.log(data);
+          this.registrationResult = data;
+        } else {
+          console.log('Error');
+        }
+
+      });
+    setTimeout(() => {
+      console.log('In ts recieved response  : ' + JSON.stringify(this.registrationResult), this.registrationResult);
+    }, 12000);
+    if (this.registrationResult === 1) {
+      this.userExist = true;
+    }
   }
   slide() {
     this.slider = document.getElementById('slider')['value'];
   }
   ngOnInit() {
     this.slider = document.getElementById('slider')['value'];
-    this.getRegistrationResult();
+    //this.getRegistrationResult();
   }
 
 }
